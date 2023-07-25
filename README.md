@@ -1,3 +1,6 @@
+> This repo is a fork of logdna/logspout, with support for sub-second precision
+> timestamps. There's a PR waiting to be merged into upstream: https://github.com/logdna/logspout/pull/39
+
 # LogDNA LogSpout
 A Docker LogSpout image to stream logs from your containers to LogDNA.
 
