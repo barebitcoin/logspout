@@ -44,7 +44,7 @@ Create and run container named *logdna* from this image using CLI:
 sudo docker run --name="logdna" --restart=always \
 -d -v=/var/run/docker.sock:/var/run/docker.sock \
 -e LOGDNA_KEY="<LogDNA Ingestion Key>" \
-logdna/logspout:latest
+barebitcoin/logspout:latest
 ```
 
 ### Docker Cloud
@@ -56,7 +56,7 @@ logdna:
   environment:
     - LOGDNA_KEY="<LogDNA Ingestion Key>"
     - TAGS='{{.Container.Config.Hostname}}'
-  image: 'logdna/logspout:latest'
+  image: 'barebitcoin/logspout:latest'
   restart: always
   volumes:
     - '/var/run/docker.sock:/var/run/docker.sock'
@@ -70,7 +70,7 @@ services:
     environment:
         - LOGDNA_KEY="<LogDNA Ingestion Key>"
         - TAGS='{{ if .Container.Config.Labels }}{{index .Container.Config.Labels "com.amazonaws.ecs.task-definition-family"}}:{{index .Container.Config.Labels "com.amazonaws.ecs.container-name"}}{{ else }}{{.ContainerName}}{{ end }}'
-    image: logdna/logspout:latest
+    image: barebitcoin/logspout:latest
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -84,7 +84,7 @@ Modify your Rancher Compose Stackfile to have `LogDNA` Service as described belo
 version: '2'
 services:
   logdna:
-    image: logdna/logspout:latest
+    image: barebitcoin/logspout:latest
     environment:
       LOGDNA_KEY="<LogDNA Ingestion Key>"
     restart: always
@@ -104,7 +104,7 @@ networks:
   logging:
 services:
   logdna:
-    image: logdna/logspout:latest
+    image: barebitcoin/logspout:latest
     networks:
       - logging
     volumes:
