@@ -33,7 +33,7 @@ import (
     "time"
 
     "github.com/gliderlabs/logspout/router"
-    "github.com/logdna/logspout/logdna/adapter"
+    "github.com/barebitcoin/logspout/logdna/adapter"
 )
 
 /*
