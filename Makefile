@@ -26,7 +26,9 @@ publish:
 	docker push $(IMAGE_ARM64)
 	docker manifest create $(IMAGE):$(TAG) $(IMAGE_AMD64) $(IMAGE_ARM64)
 	docker manifest annotate $(IMAGE):$(TAG) $(IMAGE_ARM64) --arch arm64 --os linux
+	docker manifest annotate $(IMAGE):$(TAG) $(IMAGE_AMD64) --arch amd64 --os linux
 	docker manifest push --purge $(IMAGE):$(TAG)
 	docker manifest create $(IMAGE):latest $(IMAGE_AMD64) $(IMAGE_ARM64)
 	docker manifest annotate $(IMAGE):latest $(IMAGE_ARM64) --arch arm64 --os linux
+	docker manifest annotate $(IMAGE):latest $(IMAGE_AMD64) --arch amd64 --os linux
 	docker manifest push --purge $(IMAGE):latest
