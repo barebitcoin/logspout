@@ -9,8 +9,8 @@ ENV GOARCH=${ARCH}
 ENV GOOS=${OS}
 ENV GOPATH=/go
 ENV CGO_ENABLED=0
-RUN go get
-RUN go build -ldflags "-X main.Version=$(cat VERSION)-logdna" -o /bin/logspout
+RUN GOPRIVATE=github.com/barebitcoin/logspout go get
+RUN GOPRIVATE=github.com/barebitcoin/logspout go build -ldflags "-X main.Version=$(cat VERSION)-logdna" -o /bin/logspout
 
 
 FROM scratch
